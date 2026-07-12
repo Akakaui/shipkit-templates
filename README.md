@@ -120,6 +120,7 @@ bash install.sh --force
 ```
 .claude-plugin/
   plugin.json              # Plugin manifest
+  package.json             # npm package metadata
 .claude/
   rules/
     pipeline.md            # 6-phase pipeline enforcement
@@ -140,17 +141,32 @@ bash install.sh --force
   settings.json            # Permission config
 ```
 
-**Usage:**
-- `/ship fix the login bug` — runs full pipeline
-- `/review` — reviews staged changes
-- Agents available via `@shipkit-planner`, `@shipkit-architect`, `@shipkit-reviewer`
+**Install from docs:**
+Plugins install to `~/.claude/plugins/<plugin-name>/`. After install, restart Claude Code. Commands appear as `/pluginname:command`.
 
-**Install manually:**
+```bash
+# Global install (all projects)
+cp -r claude-code/.claude ~/.claude/plugins/shipkit-templates/.claude
+cp -r claude-code/.claude-plugin ~/.claude/plugins/shipkit-templates/.claude-plugin
+
+# Or use the install script
+./scripts/install-plugin.sh shipkit-templates
+
+# Force reinstall
+./scripts/install-plugin.sh shipkit-templates --force
+```
+
+**Per-project install:**
 ```bash
 cp -r claude-code/.claude /path/to/project/.claude
 cp -r claude-code/.claude-plugin /path/to/project/.claude-plugin
 cp claude-code/.claude/settings.json /path/to/project/.claude/settings.json
 ```
+
+**Usage:**
+- `/shipkit-templates:ship fix the login bug` — runs full pipeline
+- `/shipkit-templates:review` — reviews staged changes
+- Agents available via `@shipkit-planner`, `@shipkit-architect`, `@shipkit-reviewer`
 
 #### Cursor
 
@@ -166,7 +182,17 @@ cp claude-code/.claude/settings.json /path/to/project/.claude/settings.json
     reviewer.mdc           # Review phase
 ```
 
-**MDC format:**
+**Install from docs:** Copy `.cursor/rules/` to your project root. Rules use MDC format with YAML frontmatter. The `.cursorrules` file at project root also works (legacy, deprecated).
+
+```bash
+# Per-project install
+cp -r cursor/.cursor /path/to/project/.cursor
+
+# Global install (all projects)
+cp -r cursor/.cursor/rules ~/.cursor/rules
+```
+
+**MDC format (4 activation modes):**
 ```yaml
 ---
 description: What this rule does
@@ -175,10 +201,10 @@ alwaysApply: false
 ---
 ```
 
-**Install manually:**
-```bash
-cp -r cursor/.cursor /path/to/project/.cursor
-```
+- `alwaysApply: true` — loads in every chat
+- `globs` — activates when matching files are in context
+- `description` — AI decides based on your request
+- No frontmatter — rule is always active
 
 #### Cline
 
@@ -191,13 +217,29 @@ cp -r cursor/.cursor /path/to/project/.cursor
   architect.md             # Architect phase
   planner.md               # Planning phase
   reviewer.md              # Review phase
-  workflows/               # Workflow definitions (empty, ready for config)
 ```
 
-**Install manually:**
+**Install from docs:** Copy `.clinerules/` to your project root. Rules are plain markdown. Supports YAML frontmatter with `paths` for conditional activation.
+
 ```bash
+# Per-project install
 cp -r cline/.clinerules /path/to/project/.clinerules
+
+# Global install (all projects)
+cp -r cline/.clinerules ~/.clinerules
 ```
+
+**Conditional activation (optional):**
+```yaml
+---
+paths:
+  - "src/components/**"
+  - "src/pages/**"
+---
+# Only activates when working in these directories
+```
+
+No frontmatter = always active.
 
 #### Windsurf
 
@@ -213,10 +255,17 @@ cp -r cline/.clinerules /path/to/project/.clinerules
     reviewer.md            # Review phase
 ```
 
-**Install manually:**
+**Install from docs:** Copy `.windsurf/rules/` to your project root. Rules are pure markdown, no frontmatter. 12,000 character limit per file. Global rules go in `~/.windsurf/rules/`.
+
 ```bash
+# Per-project install
 cp -r windsurf/.windsurf /path/to/project/.windsurf
+
+# Global install (all projects)
+cp -r windsurf/.windsurf/rules ~/.windsurf/rules
 ```
+
+**Legacy format:** `.windsurfrules` in project root (single file, deprecated).
 
 #### Codex CLI
 
@@ -230,6 +279,13 @@ AGENTS.md                  # Cross-tool shared rules
     builder.toml           # Build agent
     reviewer.toml          # Review agent
     shipper.toml           # Ship agent
+```
+
+**Install from docs:** Copy `AGENTS.md` to project root. Optionally add `.codex/agents/*.toml` for custom agents.
+
+```bash
+cp codex/AGENTS.md /path/to/project/AGENTS.md
+cp -r codex/.codex /path/to/project/.codex
 ```
 
 **TOML agent format:**
@@ -247,12 +303,6 @@ task = """
 
 **Usage:** Type `$planner`, `$architect`, `$builder`, `$reviewer`, `$shipper` to invoke agents.
 
-**Install manually:**
-```bash
-cp codex/AGENTS.md /path/to/project/AGENTS.md
-cp -r codex/.codex /path/to/project/.codex
-```
-
 #### Aider
 
 **Files installed:**
@@ -267,7 +317,8 @@ CONVENTIONS.md             # Global conventions
     reviewer.md            # Review phase
 ```
 
-**Install manually:**
+**Install from docs:** Copy `CONVENTIONS.md` to project root. Load with `/read CONVENTIONS.md` or `aider --read CONVENTIONS.md`. Rules in `.aider.d/` load on startup.
+
 ```bash
 cp aider/CONVENTIONS.md /path/to/project/CONVENTIONS.md
 cp -r aider/.aider.d /path/to/project/.aider.d
@@ -292,9 +343,15 @@ cp -r aider/.aider.d /path/to/project/.aider.d
     review/SKILL.md        # Review phase skill
 ```
 
-**Install manually:**
+**Install from docs:** Copy agents to `.opencode/agents/` and skills to `.opencode/skills/`. Global install goes to `~/.config/opencode/`.
+
 ```bash
+# Per-project install
 cp -r opencode/.opencode /path/to/project/.opencode
+
+# Global install (all projects)
+cp -r opencode/.opencode/agents ~/.config/opencode/agents
+cp -r opencode/.opencode/skills ~/.config/opencode/skills
 ```
 
 #### Antigravity
@@ -312,7 +369,8 @@ GEMINI.md                  # Global rules (root level)
     reviewer.md            # Review phase
 ```
 
-**Install manually:**
+**Install from docs:** Copy `.agents/rules/` and `GEMINI.md` to project root.
+
 ```bash
 cp antigravity/GEMINI.md /path/to/project/GEMINI.md
 cp -r antigravity/.agents /path/to/project/.agents
