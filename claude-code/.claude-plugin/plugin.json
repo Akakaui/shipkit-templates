@@ -1,0 +1,16 @@
+{
+  "$schema": "https://code.claude.com/schemas/plugin.json",
+  "name": "shipkit",
+  "version": "1.0.0",
+  "description": "Shipkit: multi-agent development pipeline for Claude Code",
+  "author": {
+    "name": "shipkit"
+  },
+  "license": "MIT",
+  "keywords": ["pipeline", "quality-gates", "multi-agent", "ship"],
+  "defaultEnabled": true,
+  "skills": "skills",
+  "agents": "agents",
+  "commands": "commands",
+  "hooks": "hooks/hooks.json"
+}

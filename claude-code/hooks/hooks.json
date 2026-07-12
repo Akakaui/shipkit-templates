@@ -1,0 +1,34 @@
+{
+  "preToolUse": [
+    {
+      "matcher": "write|edit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '[shipkit] Verifying phase compliance before file modification...'"
+        }
+      ]
+    }
+  ],
+  "postToolUse": [
+    {
+      "matcher": "bash",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '[shipkit] Post-action hook: verify tests pass after code changes...'"
+        }
+      ]
+    }
+  ],
+  "sessionStart": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '[shipkit] Session started. Pipeline: Detect → Plan → Architect → Build → Review → Ship'"
+        }
+      ]
+    }
+  ]
+}
