@@ -1,6 +1,6 @@
 # Shipkit Agent Templates
 
-Multi-agent development pipeline rules for AI coding agents. One pipeline, every tool.
+Multi-agent development pipeline + 66 coding skills for AI tools. One pipeline, every tool.
 
 ---
 
@@ -21,12 +21,14 @@ Multi-agent development pipeline rules for AI coding agents. One pipeline, every
     - [OpenCode](#opencode)
     - [Antigravity](#antigravity)
 - [The 6-Phase Pipeline](#the-6-phase-pipeline)
+- [Skills](#skills)
+  - [Frontend/Design](#frontenddesign)
+  - [Video/Media](#videomedia)
+  - [Code/Dev Tools](#codedev-tools)
+  - [Content (Technical)](#content-technical)
+  - [Shared/Utility](#sharedutility)
 - [File Structure](#file-structure)
 - [Customization](#customization)
-  - [Adding Your Own Rules](#adding-your-own-rules)
-  - [Adding New Agents](#adding-new-agents)
-  - [Pipeline Phases](#pipeline-phases)
-- [What Each Agent Gets](#what-each-agent-gets)
 - [FAQ](#faq)
 - [License](#license)
 
@@ -34,7 +36,7 @@ Multi-agent development pipeline rules for AI coding agents. One pipeline, every
 
 ## Overview
 
-Shipkit injects a structured 6-phase development pipeline into whichever AI coding tools your team uses:
+Shipkit injects a structured 6-phase development pipeline into whichever AI coding tools your team uses, plus 66 coding/development skills:
 
 ```
 Detect → Plan → Architect → Build → Review → Ship
@@ -74,7 +76,7 @@ The installer auto-detects which AI tools are in use and installs the appropriat
 | **Windsurf** | Plain markdown | `.windsurf/rules/*.md` | — | — | — |
 | **Codex CLI** | TOML + AGENTS.md | `.codex/agents/*.toml` + `AGENTS.md` | `planner`, `architect`, `builder`, `reviewer`, `shipper` | — | — |
 | **Aider** | Conventions + rules | `CONVENTIONS.md` + `.aider.d/` | — | — | — |
-| **OpenCode** | Agents + skills | `.opencode/agents/*.md` + `.opencode/skills/` | `shipkit`, `planner`, `architect`, `reviewer` | `detect`, `build`, `deploy`, `plan`, `architect`, `review` | — |
+| **OpenCode** | Agents + skills | `.opencode/agents/*.md` + `.opencode/skills/` | `shipkit`, `planner`, `architect`, `reviewer` | 66 coding skills | — |
 | **Antigravity** | Rules + GEMINI.md | `.agents/rules/*.md` + `GEMINI.md` | — | — | — |
 
 ---
@@ -335,12 +337,7 @@ cp -r aider/.aider.d /path/to/project/.aider.d
     architect.md           # Architect agent
     reviewer.md            # Review agent
   skills/
-    detect/SKILL.md        # Detect phase skill
-    build/SKILL.md         # Build phase skill
-    deploy/SKILL.md        # Ship phase skill
-    plan/SKILL.md          # Planning phase skill
-    architect/SKILL.md     # Architect phase skill
-    review/SKILL.md        # Review phase skill
+    [66 coding skills - see Skills section]
 ```
 
 **Install from docs:** Copy agents to `.opencode/agents/` and skills to `.opencode/skills/`. Global install goes to `~/.config/opencode/`.
@@ -393,12 +390,115 @@ Every feature goes through these phases IN ORDER. Stop if any phase fails.
 
 ---
 
+## Skills
+
+66 coding/development skills organized by category:
+
+### Frontend/Design
+
+| Skill | Description |
+|-------|-------------|
+| `frontend-design` | Frontend design patterns and best practices |
+| `design` | General design principles |
+| `canvas-design` | Canvas-based design techniques |
+| `ui-ux-pro-max` | Advanced UI/UX patterns |
+| `open-design` | Open design system principles |
+| `efecto-plugin` | Efecto plugin integration |
+| `efecto-web-design` | Efecto web design patterns |
+| `efecto-graphic-design` | Efecto graphic design |
+| `efecto-social-media` | Efecto social media design |
+| `typexperiments` | Typography experiments |
+| `theme-factory` | Theme creation system |
+
+### Video/Media
+
+| Skill | Description |
+|-------|-------------|
+| `video` | Video production fundamentals |
+| `general-video` | General video workflows |
+| `motion-graphics` | Motion graphics creation |
+| `hyperframes` | HyperFrames video system |
+| `hyperframes-animation` | HyperFrames animation |
+| `hyperframes-cli` | HyperFrames CLI tools |
+| `hyperframes-core` | HyperFrames core system |
+| `hyperframes-creative` | HyperFrames creative direction |
+| `hyperframes-keyframes` | HyperFrames keyframe system |
+| `hyperframes-media` | HyperFrames media handling |
+| `hyperframes-registry` | HyperFrames registry system |
+| `remotion-best-practices` | Remotion best practices |
+| `remotion-to-hyperframes` | Remotion to HyperFrames migration |
+| `music-to-video` | Music-to-video conversion |
+| `talking-head-recut` | Talking head video editing |
+| `embedded-captions` | Embedded caption system |
+| `pr-to-video` | PR to video conversion |
+| `product-launch-video` | Product launch video creation |
+| `website-to-video` | Website to video conversion |
+| `faceless-explainer` | Faceless explainer videos |
+| `ian-xiaohei-illustrations` | Ian Xiaohei illustration style |
+| `slideshow` | Slideshow creation |
+| `image` | Image processing and creation |
+
+### Code/Dev Tools
+
+| Skill | Description |
+|-------|-------------|
+| `git-workflow` | Git workflow best practices |
+| `testing` | Testing strategies |
+| `security` | Security best practices |
+| `performance` | Performance optimization |
+| `modularity` | Modular code design |
+| `monitoring` | System monitoring |
+| `deployment` | Deployment strategies |
+| `stack-selector` | Technology stack selection |
+| `scope-classifier` | Project scope classification |
+| `webapp-testing` | Web application testing |
+| `code-cleanup` | Code cleanup and refactoring |
+| `documentation` | Documentation writing |
+| `doc-coauthoring` | Documentation co-authoring |
+| `handoff` | Project handoff procedures |
+| `browser` | Browser automation |
+| `agent-browser` | Agent browser automation |
+| `watch` | File watching |
+| `watch-content` | Content watching |
+
+### Content (Technical)
+
+| Skill | Description |
+|-------|-------------|
+| `content-pipeline` | Content pipeline system |
+| `stop-slop` | Remove AI writing patterns |
+| `humanizer` | Humanize content output |
+| `voice` | Brand voice guidelines |
+
+### Shared/Utility
+
+| Skill | Description |
+|-------|-------------|
+| `tools` | Tool reference system |
+| `skill-creator` | Skill creation guide |
+| `skill-scanner` | Skill discovery system |
+| `find-skills` | Find available skills |
+| `bootstrap` | Bootstrap initialization |
+| `bridge` | Cross-system collaboration |
+| `confirmation` | Confirmation protocol |
+| `cleanup` | Cleanup procedures |
+| `context-engineering` | Context optimization |
+| `context-manager` | Context window management |
+
+---
+
 ## File Structure
 
 ```
 shipkit-templates/
 ├── shared/
 │   └── AGENTS.md              # Cross-tool universal rules
+├── skills/                    # 66 coding skills
+│   ├── frontend-design/
+│   ├── video/
+│   ├── hyperframes/
+│   ├── git-workflow/
+│   └── ... [62 more]
 ├── claude-code/
 │   ├── .claude-plugin/
 │   │   └── plugin.json        # Plugin manifest
@@ -424,7 +524,7 @@ shipkit-templates/
 ├── opencode/
 │   └── .opencode/
 │       ├── agents/            # shipkit.md, planner.md, etc.
-│       └── skills/            # detect/, build/, deploy/, etc.
+│       └── skills/            # 66 coding skills
 ├── antigravity/
 │   ├── GEMINI.md
 │   └── .agents/rules/         # shipkit.md, detect.md, etc.
@@ -461,21 +561,6 @@ Stop if any phase fails. Never skip ahead.
 
 ---
 
-## What Each Agent Gets
-
-| Agent | Pipeline Rules | Agents | Skills | Commands | Config |
-|-------|---------------|--------|--------|----------|--------|
-| Claude Code | `pipeline.md`, `detect.md`, `build.md` | `planner`, `architect`, `reviewer` | `detect`, `build`, `deploy` | `/ship`, `/review` | `plugin.json`, `settings.json` |
-| Cursor | `shipkit.mdc`, `detect.mdc`, `build.mdc`, `planner.mdc`, `architect.mdc`, `reviewer.mdc` | — | — | — | — |
-| Cline | `shipkit.md`, `detect.md`, `build.md`, `planner.md`, `architect.md`, `reviewer.md` | — | — | — | — |
-| Windsurf | `shipkit.md`, `detect.md`, `build.md`, `planner.md`, `architect.md`, `reviewer.md` | — | — | — | — |
-| Codex | `AGENTS.md` | `planner`, `architect`, `builder`, `reviewer`, `shipper` | — | — | — |
-| Aider | `CONVENTIONS.md` | — | — | — | `.aider.d/` |
-| OpenCode | `shipkit.md` | `planner`, `architect`, `reviewer` | `detect`, `build`, `deploy`, `plan`, `architect`, `review` | — | — |
-| Antigravity | `shipkit.md`, `detect.md`, `build.md`, `planner.md`, `architect.md`, `reviewer.md` | — | — | — | `GEMINI.md` |
-
----
-
 ## FAQ
 
 **Q: Can I use multiple agents on the same project?**
@@ -492,6 +577,9 @@ A: Claude Code supports agents, skills, and commands. OpenCode supports agents a
 
 **Q: How do I test if the pipeline is working?**
 A: Run `/ship` (Claude Code) or describe a task to your tool. The agent should follow the 6-phase pipeline and produce structured output.
+
+**Q: What's the difference between shipkit-templates and opex-plugin?**
+A: shipkit-templates is for coding/development (pipeline + 66 skills). opex-plugin is for marketing/business operations (45 skills).
 
 ---
 
